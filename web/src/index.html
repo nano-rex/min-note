@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Min Note</title>
+    <link rel="stylesheet" href="./styles.css">
+  </head>
+  <body>
+    <main class="app-shell">
+      <aside class="sidebar" aria-label="Notes">
+        <div class="sidebar-top">
+          <h1>Min Note</h1>
+          <button id="newNoteButton" type="button">New</button>
+        </div>
+        <input id="noteSearch" type="search" placeholder="Search notes" autocomplete="off">
+        <div id="noteList" class="note-list" role="list"></div>
+      </aside>
+
+      <section class="editor-panel" aria-label="Editor">
+        <div class="title-row">
+          <input id="titleInput" class="title-input" type="text" placeholder="Untitled note" autocomplete="off">
+          <div class="actions">
+            <button id="saveButton" type="button">Save</button>
+            <button id="deleteButton" type="button">Delete</button>
+          </div>
+        </div>
+
+        <div class="find-row">
+          <input id="findInput" type="search" placeholder="Find word" autocomplete="off">
+          <input id="replaceInput" type="text" placeholder="Replace with" autocomplete="off">
+          <button id="replaceButton" type="button">Replace</button>
+          <span id="matchCount" class="match-count"></span>
+        </div>
+
+        <div class="editor-wrap">
+          <pre id="lineNumbers" class="line-numbers" aria-hidden="true">1</pre>
+          <div class="text-layer">
+            <pre id="highlightLayer" class="highlight-layer" aria-hidden="true"></pre>
+            <textarea id="bodyInput" spellcheck="true" placeholder="Write your note"></textarea>
+          </div>
+          <input id="scrollSlider" class="scroll-slider" type="range" min="0" max="100" value="0" aria-label="Editor scroll">
+        </div>
+
+        <div id="status" class="status" role="status">Ready</div>
+      </section>
+    </main>
+
+    <script type="module" src="./app.js"></script>
+  </body>
+</html>

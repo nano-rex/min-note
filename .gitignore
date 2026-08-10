@@ -1,6 +1,12 @@
-.gradle/
+/.gradle/
+android/.gradle/
 local.properties
+android/local.properties
 app/build/
+android/app/build/
 build/
+android/build/
 *.iml
 .idea/
+web/node_modules/
+web/dist/
