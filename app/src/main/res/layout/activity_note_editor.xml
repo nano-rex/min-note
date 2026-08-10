@@ -110,7 +110,7 @@
             android:scrollbars="none" />
 
         <com.convoy.noteandroid.VerticalSeekBar
-            android:id="@+id.sbBodyScroll"
+            android:id="@+id/sbBodyScroll"
             android:layout_width="36dp"
             android:layout_height="match_parent"
             android:max="100"
