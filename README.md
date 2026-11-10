@@ -1,37 +1,54 @@
 # min-note
 
-A minimal offline note app.
+A minimal offline note app for Android and the browser. No account, no sync, no network:
+notes stay on the device.
 
-## Android
+## Features
 
-The Android project lives in `android/`.
+- Create, edit and delete notes (title + body)
+- Search notes by title
+- Find and replace inside a note (**Search and replace**)
+- Android: local SQLite storage (package `com.convoy.noteandroid`)
+- Web: plain HTML/CSS/JavaScript, notes kept in the browser's `localStorage`
 
-Current Android scope:
-- create notes
-- edit notes
-- delete notes
-- search notes by title
-- local SQLite storage only
+## Build and run
 
-App package:
-- `com.convoy.noteandroid`
+### Android (`android/`)
 
-Build debug APK:
+Requirements: JDK 17 and the Android SDK with platform 34 and build-tools 34
+(`sdkmanager "platforms;android-34" "build-tools;34.0.0"`). Android Studio is not needed;
+the Gradle 8.2 wrapper is included.
+
 ```bash
-export JAVA_HOME=/home/user/Downloads/toolchains/jdk-17.0.18+8
-export ANDROID_SDK_ROOT=/home/user/Downloads/android-sdk
-export GRADLE_USER_HOME=/tmp/gradle-user-home
-export PATH="$JAVA_HOME/bin:$ANDROID_SDK_ROOT/platform-tools:$ANDROID_SDK_ROOT/cmdline-tools/latest/bin:$PATH"
-cd android
+git clone https://github.com/nano-rex/min-note.git
+cd min-note/android
+export ANDROID_HOME=$HOME/Android/Sdk      # path to your Android SDK
 ./gradlew :app:assembleDebug
+adb install -r app/build/outputs/apk/debug/app-debug.apk
 ```
 
-## Web
+### Web (`web/`)
 
-The web version lives in `web/` and uses Bun with plain HTML, CSS, and JavaScript.
+Requires [Bun](https://bun.sh). No dependencies to install.
 
-Run locally:
 ```bash
-cd web
-bun run dev
+cd min-note/web
+bun run dev          # auto-reload while editing; or: bun run start
 ```
+
+Then open <http://localhost:4173> (set `PORT=…` to change it).
+
+## Example
+
+1. Tap **New Note**, enter the title `Groceries` and the body:
+
+   ```
+   milk
+   eggs
+   bread
+   ```
+
+   then **Save** — the list shows "Note created".
+2. Type `groc` in **Search notes** to find it again.
+3. Open it → **Search and replace**: find `milk`, replace with `oat milk` → **Replace**.
+4. **Delete** removes the note.
